@@ -84,6 +84,31 @@
         </execution>
     </executions>
 </plugin>
+<plugin>
+    <groupId>org.owasp</groupId>
+    <artifactId>dependency-check-maven</artifactId>
+    <version>8.0.2</version>
+    <executions>
+        <execution>
+            <goals>
+                <goal>check</goal> <!-- Performs the vulnerability analysis -->
+                <goal>aggregate</goal> <!-- Generates aggregate reports -->
+            </goals>
+            <phase>verify</phase> <!-- Run after tests -->
+        </execution>
+    </executions>
+    <configuration>
+        <!-- Location to save reports -->
+        <format>XML</format>
+        <outputDirectory>${project.build.directory}/dependency-check-report</outputDirectory>
+
+        <!-- Use your NVD API Key for up-to-date vulnerability data -->
+        <nvdApiKey>${env.NVD_API_KEY}</nvdApiKey>
+
+        <!-- Fail the build if high severity vulnerabilities found -->
+        <failBuildOnCVSS>7</failBuildOnCVSS>
+    </configuration>
+</plugin>
 
 		</plugins>
 	</build>
