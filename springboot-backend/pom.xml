@@ -131,28 +131,19 @@
 			</plugin>
 
 			<!-- CycloneDX BOM Generation for Dependency Track -->
-			<plugin>
-  <groupId>org.cyclonedx</groupId>
-  <artifactId>cyclonedx-maven-plugin</artifactId>
-  <version>2.9.0</version>
-  <executions>
-    <execution>
-      <phase>package</phase>
-      <goals>
-        <goal>makeAggregateBom</goal>
-      </goals>
-    </execution>
-  </executions>
-  <configuration>
-    <includeBomSerialNumber>true</includeBomSerialNumber>
-    <includeBuildSystem>true</includeBuildSystem>
-    <includeCompileScope>true</includeCompileScope>
-    <includeRuntimeScope>true</includeRuntimeScope>
-    <includeProvidedScope>false</includeProvidedScope>
-    <includeTestScope>false</includeTestScope>
-    <outputFormat>all</outputFormat> <!-- ✅ key line -->
-  </configuration>
+	<plugin>
+    <groupId>org.cyclonedx</groupId>
+    <artifactId>cyclonedx-maven-plugin</artifactId>
+    <version>2.9.0</version>
+    <configuration>
+        <includeBomSerialNumber>false</includeBomSerialNumber>
+        <outputFormat>xml</outputFormat>
+        <includeLicenseText>false</includeLicenseText>
+        <projectName>ReactJS-Spring-Boot-CRUD-Full-Stack-App</projectName>
+        <projectVersion>1.0.0</projectVersion>
+    </configuration>
 </plugin>
+
 
 		</plugins>
 	</build>
