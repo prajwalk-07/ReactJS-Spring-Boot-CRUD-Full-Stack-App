@@ -9,12 +9,10 @@
 		<relativePath/>
 		<!-- lookup parent from repository -->
 	</parent>
-	// ... existing code ...
 	<groupId>net.javaguides</groupId>
 	<artifactId>ReactJS-Spring-Boot-CRUD-Full-Stack-App</artifactId>
 	<version>1.0.0</version>
 	<name>ReactJS-Spring-Boot-CRUD-Full-Stack-App</name>
-// ... existing code ...
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
