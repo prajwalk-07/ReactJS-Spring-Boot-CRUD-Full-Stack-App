@@ -1,27 +1,24 @@
-# ---------- Stage 1: Build React ----------
+# ---------- Stage 1: Build React App ----------
 FROM node:18-alpine AS builder
-WORKDIR /app
 
-# Copy and install dependencies
+WORKDIR /app
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
 # Copy project files and build production bundle
 COPY . .
+
+# ✅ Fix OpenSSL error for Node 17+
+ENV NODE_OPTIONS=--openssl-legacy-provider
+
 RUN npm run build
 
 # ---------- Stage 2: Serve via Nginx ----------
 FROM nginx:alpine
 WORKDIR /usr/share/nginx/html
-
-# Remove default Nginx static files
 RUN rm -rf ./*
-
-# Copy build output from builder stage
 COPY --from=builder /app/build .
-
-# Expose the port Nginx serves
 EXPOSE 80
-
-# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
